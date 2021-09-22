@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Compose Shopper</string>
+    <string name="catalog">Catalog</string>
 </resources>
