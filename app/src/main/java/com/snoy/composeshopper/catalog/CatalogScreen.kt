@@ -24,14 +24,16 @@ import com.snoy.composeshopper.catalog.models.Item
 import com.snoy.composeshopper.ui.theme.ComposeShopperTheme
 
 @Composable
-fun CatalogScreen() {
+fun CatalogScreen(
+    onCartClick: () -> Unit = {},
+) {
     Scaffold(
         topBar = {
             // We use TopAppBar from accompanist-insets-ui which allows us to provide
             // content padding matching the system bars insets.
             TopAppBar(
                 title = { Text(stringResource(R.string.catalog)) },
-                backgroundColor = MaterialTheme.colors.primary,//.copy(alpha = 0.95f),
+                backgroundColor = MaterialTheme.colors.primary,
                 contentPadding = rememberInsetsPaddingValues(
                     LocalWindowInsets.current.statusBars,
                     applyBottom = false,
@@ -39,6 +41,7 @@ fun CatalogScreen() {
                 actions = {
                     IconButton(onClick = {
                         Log.d("RDTest", "Cart icon clicked!")
+                        onCartClick()
                     }) {
                         Icon(Icons.Filled.ShoppingCart, contentDescription = "ShoppingCart")
                     }
@@ -62,9 +65,6 @@ fun CatalogScreen() {
                 contentPadding = contentPadding,
                 modifier = Modifier.fillMaxSize(),
             ) {
-//                items(items = listItems) { imageUrl ->
-//                    ListItem(imageUrl, Modifier.fillMaxWidth())
-//                }
                 // Add Catalog.count items
                 items(Catalog.count) { index ->
                     MyListItem(Catalog.getByPosition(index))

@@ -3,12 +3,14 @@ package com.snoy.composeshopper
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
-import com.snoy.composeshopper.catalog.CatalogScreen
 import com.snoy.composeshopper.ui.theme.ComposeShopperTheme
 
 class MainActivity : ComponentActivity() {
+
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeShopperTheme {
                 ProvideWindowInsets {
-                    CatalogScreen()
+                    ShopperApp()
                 }
             }
         }
