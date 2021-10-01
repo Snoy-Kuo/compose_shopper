@@ -67,7 +67,7 @@ fun CatalogScreen(
             ) {
                 // Add Catalog.count items
                 items(Catalog.count) { index ->
-                    MyListItem(Catalog.getByPosition(index))
+                    CatalogListItem(Catalog.getByPosition(index))
                 }
             }
         }
@@ -85,7 +85,7 @@ fun DefaultPreview() {
 }
 
 @Composable
-private fun MyListItem(item: Item) {
+private fun CatalogListItem(item: Item) {
     Row(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
@@ -113,6 +113,6 @@ private fun MyListItem(item: Item) {
 @Composable
 fun ItemPreview() {
     ComposeShopperTheme {
-        MyListItem(Item(id = 0, name = "NAME"))
+        CatalogListItem(Item(id = 0, name = "NAME"))
     }
 }
