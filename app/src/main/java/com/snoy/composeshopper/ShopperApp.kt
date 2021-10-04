@@ -5,10 +5,12 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.snoy.composeshopper.cart.CartScreen
+import com.snoy.composeshopper.cart.CartViewModelFactory
 import com.snoy.composeshopper.catalog.CatalogScreen
 
 //ref= https://google.github.io/accompanist/navigation-animation/
@@ -39,7 +41,7 @@ fun ShopperApp() {
             popExitTransition = { _, _ ->
                 slideOutHorizontally(targetOffsetX = { 1080 }, animationSpec = tween(500))
             }) {
-            CartScreen(onBackPress = {
+            CartScreen(viewModel = viewModel(factory = CartViewModelFactory()), onBackPress = {
                 navController.popBackStack()//.navigate(route = "catalog")
             })
         }

@@ -2,23 +2,12 @@ package com.snoy.composeshopper.cart.repo
 
 import com.snoy.composeshopper.cart.models.Cart
 import com.snoy.composeshopper.catalog.models.Item
+import com.snoy.composeshopper.common.repo.Result
+import kotlinx.coroutines.flow.StateFlow
 
-/**
- * A fake repo returning sample data
- */
-object CartRepo {
-    fun getCart(): Cart {
-        return Cart(items = getFakeList())
-    }
-
-    private fun getFakeList(): List<Item> {
-        val itemNames = listOf(
-            "Item A",
-            "Item C",
-            "Item F",
-            "Item J",
-            "Item O",
-        )
-        return itemNames.map { Item(id = it.last().uppercaseChar().code - 'A'.code, name = it) }
-    }
+interface CartRepo {
+    fun observeCart(): StateFlow<Result<Cart>>
+    suspend fun loadCart()
+    suspend fun addCartItem(item: Item)
+    suspend fun removeCartItem(item: Item)
 }
