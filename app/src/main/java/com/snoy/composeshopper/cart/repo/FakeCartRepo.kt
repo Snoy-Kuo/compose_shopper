@@ -16,6 +16,7 @@ import kotlinx.coroutines.withContext
  */
 object FakeCartRepo : CartRepo {
     private var cartData: Cart? = null
+    @Suppress("ObjectPropertyName")
     private val _result = MutableStateFlow<Result<Cart>>(Result.Loading)
     private val result: StateFlow<Result<Cart>> = _result
 

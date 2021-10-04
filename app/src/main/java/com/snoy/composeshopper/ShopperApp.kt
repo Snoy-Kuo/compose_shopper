@@ -12,6 +12,7 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.snoy.composeshopper.cart.CartScreen
 import com.snoy.composeshopper.cart.CartViewModelFactory
 import com.snoy.composeshopper.catalog.CatalogScreen
+import com.snoy.composeshopper.catalog.CatalogViewModelFactory
 
 //ref= https://google.github.io/accompanist/navigation-animation/
 
@@ -24,9 +25,11 @@ fun ShopperApp() {
         composable(
             route = "catalog"
         ) {
-            CatalogScreen(onCartClick = {
-                navController.navigate(route = "cart")
-            })
+            CatalogScreen(
+                viewModel = viewModel(factory = CatalogViewModelFactory()),
+                onCartClick = {
+                    navController.navigate(route = "cart")
+                })
         }
         composable("cart",
             enterTransition = { _, _ ->
@@ -41,9 +44,11 @@ fun ShopperApp() {
             popExitTransition = { _, _ ->
                 slideOutHorizontally(targetOffsetX = { 1080 }, animationSpec = tween(500))
             }) {
-            CartScreen(viewModel = viewModel(factory = CartViewModelFactory()), onBackPress = {
-                navController.popBackStack()//.navigate(route = "catalog")
-            })
+            CartScreen(
+                viewModel = viewModel(factory = CartViewModelFactory()),
+                onBackPress = {
+                    navController.popBackStack()//.navigate(route = "catalog")
+                })
         }
     }
 }

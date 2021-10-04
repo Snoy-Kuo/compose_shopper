@@ -19,7 +19,7 @@ class CartViewModel(
     }
 
     //event        
-    fun loadCart() {
+    private fun loadCart() {
         viewModelScope.launch {
             repo.loadCart()
         }
