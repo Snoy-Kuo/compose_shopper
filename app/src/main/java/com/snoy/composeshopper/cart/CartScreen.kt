@@ -1,6 +1,5 @@
 package com.snoy.composeshopper.cart
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -85,7 +84,6 @@ fun CartScreen(
                     modifier = Modifier.padding(contentPadding),
                     cart = (state as Result.Success<Cart>).data,
                     onItemDeletePress = { item ->
-                        Log.d("RDTest", "Cart ${item.name} delete clicked!")
                         viewModel.removeCartItem(item)
                     },
                     onBuyPress = {

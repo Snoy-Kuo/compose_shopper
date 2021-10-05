@@ -13,9 +13,11 @@ import kotlinx.coroutines.withContext
 
 /**
  * A fake repo returning sample data
+ * We want to use the same CartRepo between ViewModels, so impl it as a singleton object.
  */
 object FakeCartRepo : CartRepo {
     private var cartData: Cart? = null
+
     @Suppress("ObjectPropertyName")
     private val _result = MutableStateFlow<Result<Cart>>(Result.Loading)
     private val result: StateFlow<Result<Cart>> = _result

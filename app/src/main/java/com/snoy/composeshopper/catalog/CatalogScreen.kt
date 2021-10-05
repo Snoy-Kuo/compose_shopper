@@ -1,6 +1,5 @@
 package com.snoy.composeshopper.catalog
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -53,7 +52,6 @@ fun CatalogScreen(
                 ),
                 actions = {
                     IconButton(onClick = {
-                        Log.d("RDTest", "Cart icon clicked!")
                         onCartClick()
                     }) {
                         Icon(Icons.Filled.ShoppingCart, contentDescription = "ShoppingCart")
@@ -87,7 +85,6 @@ fun CatalogScreen(
                                 item = catalog.getByPosition(index),
                                 cartState = cartState,
                                 onAddPress = { item ->
-                                    Log.d("RDTest", "on item ${item.id} add click.")
                                     viewModel.addCartItem(item)
                                 })
                         }

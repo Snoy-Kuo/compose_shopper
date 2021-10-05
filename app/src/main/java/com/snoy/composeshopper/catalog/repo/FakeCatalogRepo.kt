@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 
 object FakeCatalogRepo : CatalogRepo {
     private var catalogData: Catalog? = null
+
     @Suppress("ObjectPropertyName")
     private val _result = MutableStateFlow<Result<Catalog>>(Result.Loading)
     private val result: StateFlow<Result<Catalog>> = _result
